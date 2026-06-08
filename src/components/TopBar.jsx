@@ -117,7 +117,7 @@ export default function TopBar({ onCommandBar, theme, onToggleTheme }) {
         {/* Feedback */}
         <div style={{ position: 'relative' }}>
           <IconBtn
-            title="Feedback"
+            title="Sugerir mejora"
             active={feedbackOpen}
             onClick={() => setFeedbackOpen(v => !v)}
           >

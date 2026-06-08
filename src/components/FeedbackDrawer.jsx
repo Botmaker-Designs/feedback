@@ -6,8 +6,10 @@ const IMPORTANCE_OPTIONS = [
   'Solo una nota',
   'Estaría bueno tenerlo',
   'Importante',
-  'Crítico',
+  'Muy importante',
 ];
+
+const HELP_CENTER_URL = 'HELP_CENTER_URL';
 
 export default function FeedbackDropdown({ open, onClose }) {
   const [request, setRequest] = useState('');
@@ -104,10 +106,10 @@ export default function FeedbackDropdown({ open, onClose }) {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <div>
                 <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--text-primary)', lineHeight: 1.3, marginBottom: 3 }}>
-                  Enviá tu feedback o solicitud
+                  Sugerí una mejora
                 </div>
                 <div style={{ fontSize: 12, color: 'var(--text-secondary)' }}>
-                  ¿Tenés una sugerencia o pedido? Contanos.
+                  ¿Qué funcionalidad o experiencia te gustaría tener en la plataforma?
                 </div>
               </div>
               <button
@@ -132,7 +134,7 @@ export default function FeedbackDropdown({ open, onClose }) {
             {/* Request */}
             <div>
               <label style={{ display: 'block', fontSize: 11, fontWeight: 500, color: 'var(--text-secondary)', marginBottom: 6 }}>
-                Solicitud
+                Tu idea
               </label>
               <div
                 onDragOver={e => { e.preventDefault(); setDragging(true); }}
@@ -150,7 +152,7 @@ export default function FeedbackDropdown({ open, onClose }) {
                   ref={textareaRef}
                   value={request}
                   onChange={e => setRequest(e.target.value)}
-                  placeholder="Describí tu solicitud o feedback..."
+                  placeholder="Contanos qué te gustaría poder hacer, o qué experiencia mejorarías..."
                   style={{
                     width: '100%', minHeight: 100, padding: '10px 12px',
                     background: 'transparent',
@@ -240,6 +242,25 @@ export default function FeedbackDropdown({ open, onClose }) {
                 ))}
               </div>
             </div>
+
+            {/* Hint */}
+            <div style={{ fontSize: 11, color: 'var(--text-tertiary)', lineHeight: 1.5 }}>
+              Leemos todas las sugerencias para priorizar mejoras, pero no recibirás una respuesta a cada una.
+            </div>
+
+            {/* Bug redirect */}
+            <div style={{ fontSize: 11, color: 'var(--text-tertiary)', lineHeight: 1.5 }}>
+              🐞 ¿Encontraste un error?{' '}
+              <a
+                href={HELP_CENTER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'var(--accent)', textDecoration: 'underline' }}
+              >
+                Reportalo en el Help Center
+              </a>{' '}
+              para que un técnico especialista lo revise.
+            </div>
           </div>
 
           {/* Footer */}
@@ -258,7 +279,7 @@ export default function FeedbackDropdown({ open, onClose }) {
                 transition: 'background .2s, opacity .15s',
               }}
             >
-              {submitted ? '¡Feedback enviado!' : 'Enviar feedback'}
+              {submitted ? '¡Gracias por tu idea!' : 'Enviar idea'}
             </button>
           </div>
         </motion.div>
